@@ -1,5 +1,5 @@
 @ chcp 936 >nul
-@ title 程序集签名
+@ title 生成时，给程序集签名
 @ call "%VS100COMNTOOLS%vsvars32.bat" >nul
 
 @ rem ------------------ 创建密钥对 -----------------
