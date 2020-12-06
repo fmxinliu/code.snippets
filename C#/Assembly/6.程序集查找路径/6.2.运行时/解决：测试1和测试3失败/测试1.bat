@@ -1,5 +1,5 @@
 @ if "%1" neq "runas" (
-@ call D:\Repo\Project\code.snippets\scripts\bat\admin\以管理员身份运行.bat %~0
+@ call ..\..\..\..\..\scripts\bat\admin\以管理员身份运行.bat %~0
 @ exit
 )
 
