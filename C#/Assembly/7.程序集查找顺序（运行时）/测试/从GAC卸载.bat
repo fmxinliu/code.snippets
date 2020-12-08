@@ -5,6 +5,7 @@
 @ exit
 )
 
+@ title 从GAC卸载强命名程序集
 @ set CfgPath=%cd%\
 @ set TestPath=%cd%\强命名Test\
 

@@ -5,6 +5,7 @@
 @ exit
 )
 
+@ title 安装强命名程序集到GAC
 @ set CfgPath=%cd%\
 @ set TestPath=%cd%\强命名Test\
 

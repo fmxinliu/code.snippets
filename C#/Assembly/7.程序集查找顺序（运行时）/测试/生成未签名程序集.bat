@@ -1,5 +1,5 @@
 @ chcp 936 >nul
-@ title 生成强命名程序集
+@ title 生成未签名程序集
 @ call "%VS100COMNTOOLS%vsvars32.bat" >nul
 
 @ set CfgPath=%cd%\
