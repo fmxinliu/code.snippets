@@ -18,7 +18,6 @@
 @ set PolicyFileName=policy.%AssemblyOldVersion%.%AssemblyName%
 @ set PolicyFileVersion=1.0.0.0
 
-
 @ cd ..
 @ rd /s /q %TestPath% >nul
 
@@ -67,6 +66,16 @@
 @ gacutil /i %TestPath%%PolicyFileName%.dll
 
 @ rem 运行
+@ %TestPath%main.exe
+
+
+@ rem ---
+@ title 升级v2.2发现有BUG，重新链接到v1.1
+@ rem ---
+
+
+@ rem 测试略发布者策略程序集
+@ xcopy /y %CfgPath%main.exe.config %TestPath% >nul
 @ %TestPath%main.exe
 
 
