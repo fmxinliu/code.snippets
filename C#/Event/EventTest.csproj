@@ -39,6 +39,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventSet.cs" />
     <Compile Include="MailEventArgs.cs" />
     <Compile Include="MailManager.cs" />
     <Compile Include="Program.cs" />
