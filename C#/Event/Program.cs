@@ -14,6 +14,9 @@ namespace EventTest {
 
             TestUnRegister();
             Console.ReadKey();
+
+            TestEventMgr();
+            Console.ReadKey();
         }
 
         // 测试：事件被无意中重复注册
@@ -55,6 +58,23 @@ namespace EventTest {
             //});
 
             // 退出方法后，对象 p 可以被垃圾回收（所有事件都已解除注册）
+        }
+
+        static void TestEventMgr() {
+            EventMgr eventMgr = new EventMgr();
+            eventMgr.CustomEvent1 += new EventHandler<CustomEventArgs1>(eventMgr_CustomEvent1);
+            eventMgr.CustomEvent2 += new EventHandler<CustomEventArgs2>(eventMgr_CustomEvent2);
+            eventMgr.Simulate();
+            eventMgr.CustomEvent1 -= eventMgr_CustomEvent1;
+            eventMgr.CustomEvent2 -= eventMgr_CustomEvent2;
+        }
+
+        static void eventMgr_CustomEvent1(object sender, CustomEventArgs1 e) {
+            Console.WriteLine(e.Msg + ":CustomEvent1");
+        }
+
+        static void eventMgr_CustomEvent2(object sender, CustomEventArgs2 e) {
+            Console.WriteLine(e.Msg + ":CustomEvent2");
         }
     }
 }
