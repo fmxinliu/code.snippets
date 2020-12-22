@@ -8,6 +8,7 @@ namespace StringTest {
         static void Main(string[] args) {
             Chars.Test();
             Strings.Test();
+            SecureStrings.Test();
             Console.ReadKey();
         }
     }
