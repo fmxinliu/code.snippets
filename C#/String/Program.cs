@@ -9,6 +9,7 @@ namespace StringTest {
             Chars.Test();
             Strings.Test();
             SecureStrings.Test();
+            StringEncoding.Test();
             Console.ReadKey();
         }
     }
