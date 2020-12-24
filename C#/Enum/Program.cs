@@ -8,6 +8,7 @@ namespace EnumTest {
         static void Main(string[] args) {
             BitFlags.Test();
             EnumUtils.Test();
+            ExtensionMethods.Test();
             Console.ReadKey();
         }
     }
