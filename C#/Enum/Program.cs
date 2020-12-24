@@ -6,6 +6,7 @@ using System.Text;
 namespace EnumTest {
     class Program {
         static void Main(string[] args) {
+            BitFlags.Test();
             EnumUtils.Test();
             Console.ReadKey();
         }
