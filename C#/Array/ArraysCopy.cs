@@ -9,6 +9,8 @@ namespace ArrayTest {
         public static void Test() {
             ArrayAsFuncParameter();
             ArrayAsFuncReturnValue();
+            ArrayCopyNonOverlapTest();
+            ArrayCopyOverlapTest();
         }
 
         /// <summary>
@@ -46,6 +48,80 @@ namespace ArrayTest {
             s21[0] = "222";
             String[] s22 = classmates.GetNames2();
             Console.WriteLine("深拷贝一份，返回其引用。{0}", s21[0].Equals(s22[0]) ? "不安全" : "安全");
+        }
+
+        /// <summary>
+        /// 数组无重叠拷贝（引用类型的数组，执浅拷贝）
+        /// </summary>
+        private static void ArrayCopyNonOverlapTest() {
+            User[] users = {
+                new User { Name="1", Age=1 },
+                new User { Name="2", Age=2 },
+                new User { Name="3", Age=3 },
+            };
+
+            User[] users1 = new User[users.Length];
+            Array.Copy(users, users1, users.Length);
+            users1[0].Age = 111;
+            Console.WriteLine("Array.Copy执行{0}拷贝", users[0].Age == users1[0].Age ? "浅" : "深");
+
+            User[] users2 = new User[users.Length];
+            Array.ConstrainedCopy(users, 0, users2, 0, users.Length);
+            users2[1].Age = 222;
+            Console.WriteLine("Array.ConstrainedCopy执行{0}拷贝", users[1].Age == users2[1].Age ? "浅" : "深");
+
+            try {
+                // 按字节拷贝，必须是连续内存，不适用于引用类型
+                User[] users3 = new User[users.Length];
+                Buffer.BlockCopy(users, 0, users3, 0, users.Length);
+                users3[1].Age = 111;
+                Console.WriteLine("Buffer.BlockCopy执行{0}拷贝", users[1].Age == users3[1].Age ? "浅" : "深");
+            }
+            catch (System.Exception ex) {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+        /// <summary>
+        /// 数组有重叠拷贝（引用类型的数组，执浅拷贝）
+        /// </summary>
+        private static void ArrayCopyOverlapTest() {
+            User[] users = {
+                new User { Name="1", Age=1 },
+                new User { Name="2", Age=2 },
+                new User { Name="3", Age=3 },
+                new User { Name="4", Age=4 },
+                new User { Name="5", Age=5 },
+            };
+
+            User[] users1 = new User[users.Length];
+
+            // src: 1 2 3 4 5
+            // dst: x 1 2 3 4
+            users.CopyTo(users1, 0);
+            Array.Copy(users1, 0, users1, 1, users1.Length - 1);
+            PrintArray(users1);
+
+            users.CopyTo(users1, 0);
+            Array.ConstrainedCopy(users1, 0, users1, 1, users1.Length - 1);
+            PrintArray(users1);
+
+            // src:   2 3 4 5
+            // dst: 2 3 4 5 x
+            users.CopyTo(users1, 0);
+            Array.Copy(users1, 1, users1, 0, users1.Length - 1);
+            PrintArray(users1);
+
+            users.CopyTo(users1, 0);
+            Array.ConstrainedCopy(users1, 1, users1, 0, users1.Length - 1);
+            PrintArray(users1);
+        }
+
+        private static void PrintArray<T>(T[] array) {
+            foreach (T elem in array) {
+                Console.Write(elem + ",");
+            }
+            Console.WriteLine();
         }
 
         private static T[] ModifyArrayElemZero1<T>(T[] array) {
@@ -102,6 +178,15 @@ namespace ArrayTest {
                 String[] a = new String[names.Length];
                 Array.Copy(names, a, names.Length);
                 return a;
+            }
+        }
+
+        private class User {
+            public String Name { get; set; }
+            public Int32 Age { get; set; }
+
+            public override string ToString() {
+                return this.Name;
             }
         }
     }
