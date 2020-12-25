@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Arrays.cs" />
+    <Compile Include="ArraysCopy.cs" />
     <Compile Include="ArraysOnStack.cs" />
     <Compile Include="DynamicArrays.cs" />
     <Compile Include="Vector.cs" />

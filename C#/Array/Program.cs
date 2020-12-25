@@ -8,6 +8,7 @@ namespace ArrayTest {
         static void Main(string[] args) {
             Vector.Test();
             Arrays.Test();
+            ArraysCopy.Test();
             ArraysAccess.Test();
             ArraysOnStack.Test();
             DynamicArrays.Test();
