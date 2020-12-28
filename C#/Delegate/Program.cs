@@ -6,7 +6,8 @@ using System.Text;
 namespace DelegateTest {
     class Program {
         static void Main(string[] args) {
-            DelegateBasicUsages.Test();
+            //DelegateBasicUsages.Test();
+            DelegateMulticastAnalyse.Test();
             Console.ReadKey();
         }
     }
