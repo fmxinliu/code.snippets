@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DelegateBasicUsages.cs" />
     <Compile Include="DelegateMulticastAnalyse.cs" />
+    <Compile Include="DelegateMulticastOptimize.cs" />
     <Compile Include="DelegateMulticastQuestions.cs">
       <SubType>Code</SubType>
     </Compile>

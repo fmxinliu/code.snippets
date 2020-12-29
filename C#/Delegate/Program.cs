@@ -8,7 +8,8 @@ namespace DelegateTest {
         static void Main(string[] args) {
             //DelegateBasicUsages.Test();
             //DelegateMulticastAnalyse.Test();
-            DelegateMulticastQuestions.Test();
+            //DelegateMulticastQuestions.Test();
+            DelegateMulticastOptimize.Test();
             Console.ReadKey();
         }
     }
