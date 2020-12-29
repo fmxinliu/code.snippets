@@ -7,7 +7,8 @@ namespace DelegateTest {
     class Program {
         static void Main(string[] args) {
             //DelegateBasicUsages.Test();
-            DelegateMulticastAnalyse.Test();
+            //DelegateMulticastAnalyse.Test();
+            DelegateMulticastQuestions.Test();
             Console.ReadKey();
         }
     }
