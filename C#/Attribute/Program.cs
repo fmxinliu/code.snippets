@@ -7,6 +7,7 @@ namespace AttributeTest {
     class Program {
         static void Main(string[] args) {
             AttributeForeach.Test();
+            AttributeUsage.Test();
             Console.ReadKey();
         }
     }
