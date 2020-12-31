@@ -33,17 +33,17 @@ namespace NullableTest {
 
             // 相等性操作符
             if (a != null) { // 等价于 a.HasValue
-                Console.WriteLine("a({0}) != null", a);
+                Console.WriteLine("a({0}) != null", a.ToString());
             }
             else {
                 Console.WriteLine("a == null");
             }
 
             if (b == null) { // 等价于 !b.HasValue
-                Console.WriteLine("b == null", b);
+                Console.WriteLine("b == null");
             }
             else {
-                Console.WriteLine("b({0}) != null", b);
+                Console.WriteLine("b({0}) != null", b.ToString());
             }
         }
 
@@ -66,7 +66,7 @@ namespace NullableTest {
                     Console.WriteLine("a(null) == b(null)");
                 }
                 else {
-                    Console.WriteLine("a({0}) == b({1})", a, b);
+                    Console.WriteLine("a({0}) == b({1})", a.ToString(), b.ToString());
                 }
             }
             else if (a != b) {
@@ -146,7 +146,7 @@ namespace NullableTest {
             }
 
             public override String ToString() {
-                return String.Format("({0},{1})", x, y);
+                return String.Format("({0},{1})", x.ToString(), y.ToString());
             }
         }
     }
