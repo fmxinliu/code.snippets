@@ -7,6 +7,7 @@ namespace ExceptionTest {
     class Program {
         static void Main(string[] args) {
             ExceptionSearchOrder.Test();
+            CustomException.Test();
             Console.ReadKey();
         }
     }
