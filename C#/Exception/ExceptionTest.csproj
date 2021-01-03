@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="CustomException.cs" />
     <Compile Include="ExceptionSearchOrder.cs" />
+    <Compile Include="ExceptionStartPoint.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -8,6 +8,7 @@ namespace ExceptionTest {
         static void Main(string[] args) {
             ExceptionSearchOrder.Test();
             CustomException.Test();
+            ExceptionStartPoint.Test();
             Console.ReadKey();
         }
     }
