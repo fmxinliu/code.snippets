@@ -7,8 +7,9 @@ namespace ExceptionTest {
     class Program {
         static void Main(string[] args) {
             ExceptionSearchOrder.Test();
-            CustomException.Test();
             ExceptionStartPoint.Test();
+            CustomException.Test();
+            CER.Test();
             Console.ReadKey();
         }
     }
