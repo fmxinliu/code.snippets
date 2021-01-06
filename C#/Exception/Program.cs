@@ -9,6 +9,7 @@ namespace ExceptionTest {
             ExceptionSearchOrder.Test();
             ExceptionStartPoint.Test();
             CustomException.Test();
+            CSECatch.Test();
             CER.Test();
             Console.ReadKey();
         }
