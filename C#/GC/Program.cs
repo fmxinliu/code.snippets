@@ -6,7 +6,8 @@ using System.Text;
 namespace GCTest {
     class Program {
         static void Main(string[] args) {
-            GCTimerObjInAdvance.Test();
+            //GCTimerObjInAdvance.Test();
+            GCCollects.Test();
             Console.ReadKey();
         }
     }
