@@ -39,6 +39,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FreeNativeResources.cs" />
     <Compile Include="GCCollects.cs" />
     <Compile Include="GCTimerObjInAdvance.cs" />
     <Compile Include="Program.cs" />
