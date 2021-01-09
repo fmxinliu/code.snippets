@@ -9,6 +9,7 @@ namespace GCTest {
             //GCTimerObjInAdvance.Test();
             GCCollects.Test();
             FreeNativeResources.Test();
+            Finalizer.Test();
             Console.ReadKey();
         }
     }
