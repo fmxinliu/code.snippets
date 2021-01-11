@@ -10,6 +10,7 @@ namespace GCTest {
             GCCollects.Test();
             FreeNativeResources.Test();
             Finalizer.Test();
+            GCWeakReferenceObj.Test();
             Console.ReadKey();
         }
     }

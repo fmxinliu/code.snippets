@@ -43,6 +43,7 @@
     <Compile Include="FreeNativeResources.cs" />
     <Compile Include="GCCollects.cs" />
     <Compile Include="GCTimerObjInAdvance.cs" />
+    <Compile Include="GCWeakReferenceObj.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
