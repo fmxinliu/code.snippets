@@ -11,6 +11,7 @@ namespace GCTest {
             FreeNativeResources.Test();
             Finalizer.Test();
             GCWeakReferenceObj.Test();
+            GCFinalizeDefinedObj.Test();
             Console.ReadKey();
         }
     }

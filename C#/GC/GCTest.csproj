@@ -42,6 +42,7 @@
     <Compile Include="Finalizer.cs" />
     <Compile Include="FreeNativeResources.cs" />
     <Compile Include="GCCollects.cs" />
+    <Compile Include="GCFinalizeDefinedObj.cs" />
     <Compile Include="GCTimerObjInAdvance.cs" />
     <Compile Include="GCWeakReferenceObj.cs" />
     <Compile Include="Program.cs" />
