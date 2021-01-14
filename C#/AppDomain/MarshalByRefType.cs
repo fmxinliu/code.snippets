@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 
 namespace AppDomainTest {
     /// <summary>
@@ -33,5 +34,28 @@ namespace AppDomainTest {
             NonMarshalableType t = new NonMarshalableType();
             return t;
         }
+
+        #region 访问MarshalByRefObject派生类的实例字段的性能测试
+
+        public static void TestMBROFieldsAccessPerf() {
+            NonMBRO nonMbro = new NonMBRO();
+            MBRO mbro = new MBRO();
+
+            Stopwatch sw = Stopwatch.StartNew();
+            for (Int32 i = 0; i < 1e8; i++) nonMbro.x++;
+            Console.WriteLine("NonMBRO: " + sw.Elapsed);
+
+            // 性能低下
+            sw = Stopwatch.StartNew();
+            for (Int32 i = 0; i < 1e8; i++) mbro.x++;
+            Console.WriteLine("MBRO: " + sw.Elapsed);
+
+            Console.WriteLine();
+        }
+
+        private sealed class NonMBRO : Object             { public Int32 x; }
+        private sealed class MBRO    : MarshalByRefObject { public Int32 x; }
+
+        #endregion
     }
 }
