@@ -7,6 +7,7 @@ namespace ReflectionTest {
     class Program {
         static void Main(string[] args) {
             TestLibLoader.Run();
+            LoadAssemblyReflectType.Test();
             Console.ReadKey();
         }
     }
