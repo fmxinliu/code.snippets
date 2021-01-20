@@ -8,6 +8,7 @@ namespace ReflectionTest {
         static void Main(string[] args) {
             TestLibLoader.Run();
             LoadAssemblyReflectType.Test();
+            ReflectAssemblyMembers.Test();
             Console.ReadKey();
         }
     }

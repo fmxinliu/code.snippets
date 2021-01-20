@@ -48,6 +48,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="LoadAssemblyReflectType.cs" />
+    <Compile Include="ReflectAssemblyMembers.cs" />
     <Compile Include="TestLibLoader.cs" />
   </ItemGroup>
   <ItemGroup>
