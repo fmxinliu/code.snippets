@@ -9,6 +9,7 @@ namespace ReflectionTest {
             TestLibLoader.Run();
             LoadAssemblyReflectType.Test();
             ReflectAssemblyMembers.Test();
+            ReflectMembersThenInvoke.Test();
             Console.ReadKey();
         }
     }

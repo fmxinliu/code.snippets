@@ -36,6 +36,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +50,7 @@
     </Compile>
     <Compile Include="LoadAssemblyReflectType.cs" />
     <Compile Include="ReflectAssemblyMembers.cs" />
+    <Compile Include="ReflectMembersThenInvoke.cs" />
     <Compile Include="TestLibLoader.cs" />
   </ItemGroup>
   <ItemGroup>
