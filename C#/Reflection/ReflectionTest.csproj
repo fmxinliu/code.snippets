@@ -52,6 +52,7 @@
     </Compile>
     <Compile Include="LoadAssemblyReflectType.cs" />
     <Compile Include="ReflectAssemblyMembers.cs" />
+    <Compile Include="ReflectPerformanceOptimizate.cs" />
     <Compile Include="ReflectMembersThenInvoke.cs" />
     <Compile Include="TestLibLoader.cs" />
   </ItemGroup>

@@ -11,6 +11,7 @@ namespace ReflectionTest {
             LoadAssemblyReflectType.Test();
             ReflectAssemblyMembers.Test();
             ReflectMembersThenInvoke.Test();
+            ReflectPerformanceOptimizate.Test();
             CreateInstance.Test();
             Console.ReadKey();
         }
