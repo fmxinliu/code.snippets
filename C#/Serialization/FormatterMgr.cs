@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 
@@ -26,6 +27,20 @@ namespace SerializationTest {
                 stream.Read(buffer, 0, buffer.Length);
                 fs.Write(buffer, 0, buffer.Length);
             }
+        }
+
+        public static T DeepClone<T>(this T original) {
+            return (T)BinaryFormatters.DeepClone(original);
+        }
+
+        public static Boolean IsSerializable<T>(this T obj) {
+            // [Serializable]标记的类、结构；枚举、委托(不必标记[Serializable], b1返回true)
+            bool b1 = Attribute.IsDefined(typeof(T), typeof(SerializableAttribute));
+            bool b2 = typeof(T).IsSerializable;
+            if (b1 != b2) {
+                System.Diagnostics.Debugger.Break();
+            }
+            return b2;
         }
     }
 
@@ -56,6 +71,27 @@ namespace SerializationTest {
 
                 // 告诉格式化器从流中反序列化对象
                 return formatter.Deserialize(stream);
+            }
+
+            public static Object DeepClone(Object original) {
+                // 构造临时内存流
+                using (MemoryStream stream = new MemoryStream()) {
+                    // 构造序列化格式化器来执行所有真正的工作
+                    BinaryFormatter formatter = new BinaryFormatter();
+
+                    // 指定流上下文
+                    formatter.Context = new StreamingContext(StreamingContextStates.Clone);
+
+                    // 将对象图序列化到内存流中
+                    formatter.Serialize(stream, original);
+
+                    // 反序列化前，定位到内存流的其实位置
+                    stream.Position = 0;
+
+                    // 将对象图反序列化成一组新对象
+                    // 像调用者返回对象图（深拷贝）的根
+                    return formatter.Deserialize(stream);
+                }
             }
         }
 

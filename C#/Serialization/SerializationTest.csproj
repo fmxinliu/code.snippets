@@ -43,6 +43,7 @@
     <Compile Include="ControlledByAttribute.cs" />
     <Compile Include="ControlledByISerializable.cs" />
     <Compile Include="FormatterMgr.cs" />
+    <Compile Include="ObjDeepClone.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuickStart.cs" />
