@@ -6,6 +6,11 @@ using System.Security.Permissions;
 namespace SerializationTest {
     class ControlledByISerializable {
         public static void Test() {
+            TestBaseWithISerializablImpl();
+            TestBaseWithoutISerializablImpl();
+        }
+
+        public static void TestBaseWithISerializablImpl() {
             var obj = new Adder(100, 200);
             var stream = obj.SerializeToMemory();
             stream.SaveToFile("adder.txt");
@@ -15,6 +20,19 @@ namespace SerializationTest {
             obj = stream.Deserialize<Adder>();
             stream.Dispose();
         }
+
+        public static void TestBaseWithoutISerializablImpl() {
+            var obj = new Operands(77);
+            var stream = obj.SerializeToMemory();
+            stream.SaveToFile("operand.txt");
+
+            obj = null;
+            stream.Position = 0;
+            obj = stream.Deserialize<Operands>();
+            stream.Dispose();
+        }
+
+        #region 基类实现ISerializable接口
 
         [Serializable]
         private class Adder : Operator, ISerializable, IDeserializationCallback {
@@ -94,5 +112,64 @@ namespace SerializationTest {
                 info.AddValue(args, name); // #将要序列化的字段加入SerializationInfo
             }
         }
+
+        #endregion
+
+        #region 基类未实现ISerializable接口
+
+        [Serializable]
+        private class Operands : Identifier, ISerializable {
+            private Int32 value;
+            public Operands(Int32 value) : base(value) { this.value = value; }
+            public override string ToString() { return value.ToString(); }
+
+            [OnDeserialized]
+            private void OnDeserialized(StreamingContext context) {
+                Console.WriteLine("Operands: {0}, identifier:{1}", this, base.ToString());
+            }
+
+            // 用于反序列化
+            [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.SerializationFormatter)]
+            protected Operands(SerializationInfo info, StreamingContext context) : base(0) {
+                // 1.#反序列化未实现ISerializable接口的基类Identifier
+                Type basetype = this.GetType().BaseType;
+                MemberInfo[] members = FormatterServices.GetSerializableMembers(basetype, context);
+                foreach (var mi in members) {
+                    FieldInfo fi = mi as FieldInfo;
+                    if (fi != null) {
+                        fi.SetValue(this, info.GetValue(basetype.FullName + "+" + fi.Name, fi.FieldType));
+                    }
+                }
+
+                // 2.#反序列化本类
+                value = info.GetInt32("value");
+            }
+
+            // 用于序列化
+            [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.SerializationFormatter)]
+            public virtual void GetObjectData(SerializationInfo info, StreamingContext context) {
+                // 1.#序列化本类
+                info.AddValue("value", value);
+
+                // 2.#序列化未实现ISerializable接口的基类Identifier
+                Type basetype = this.GetType().BaseType;
+                MemberInfo[] members = FormatterServices.GetSerializableMembers(basetype, context);
+                foreach (var mi in members) {
+                    FieldInfo fi = mi as FieldInfo;
+                    if (fi != null) {
+                        info.AddValue(basetype.FullName + "+" + fi.Name, fi.GetValue(this));
+                    }
+                }
+            }
+        }
+
+        [Serializable]
+        private class Identifier {
+            private readonly Int32 hashcode;
+            public Identifier(Int32 hashcode) { this.hashcode = hashcode; }
+            public override string ToString() { return hashcode.ToString(); }
+        }
+
+        #endregion
     }
 }
