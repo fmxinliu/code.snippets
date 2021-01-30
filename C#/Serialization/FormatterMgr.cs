@@ -13,19 +13,28 @@ namespace SerializationTest {
             return BinaryFormatters.SerializeToMemory(objectGraph);
         }
 
-        public static T Deserialize<T>(this Stream stream, FormatterType formatterType = FormatterType.Binary) {
-            if (formatterType == FormatterType.Xml) {
-                return (T)XmlFormatters.Deserialize(stream, typeof(T));
+        public static T Deserialize<T>(this Stream stream, FormatterType formatterType = FormatterType.Binary,
+            SeekOrigin origin = SeekOrigin.Current, Boolean dispose = false) {
+            stream.Seek(0, origin);
+            Object obj = (formatterType == FormatterType.Xml) ?
+                XmlFormatters.Deserialize(stream, typeof(T)) :
+                BinaryFormatters.Deserialize(stream);
+            if (dispose) {
+                stream.Dispose();
             }
-            return (T)BinaryFormatters.Deserialize(stream);
+            return (T)obj;
         }
 
-        public static void SaveToFile(this Stream stream, String file, SeekOrigin origin = SeekOrigin.Begin) {
+        public static void SaveToFile(this Stream stream, String file,
+            SeekOrigin origin = SeekOrigin.Begin, Boolean dispose = false) {
             using (FileStream fs = new FileStream(file, FileMode.Create)) {
                 Byte[] buffer = new Byte[stream.Length];
                 stream.Seek(0, origin); // 指定写入位置，等价于设置stream.Position
                 stream.Read(buffer, 0, buffer.Length);
                 fs.Write(buffer, 0, buffer.Length);
+                if (dispose) {
+                    stream.Dispose();
+                }
             }
         }
 

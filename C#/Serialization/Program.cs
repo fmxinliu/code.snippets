@@ -8,6 +8,7 @@ namespace SerializationTest {
         static void Main(string[] args) {
             QuickStart.Test();
             ObjDeepClone.Test();
+            SerializeSingleton.Test();
             ControlledByAttribute.Test();
             ControlledByISerializable.Test();
             Console.ReadKey();
