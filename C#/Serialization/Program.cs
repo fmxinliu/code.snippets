@@ -11,6 +11,7 @@ namespace SerializationTest {
             SerializeSingleton.Test();
             ControlledByAttribute.Test();
             ControlledByISerializable.Test();
+            SurrogateSelectors.Test();
             Console.ReadKey();
         }
     }
