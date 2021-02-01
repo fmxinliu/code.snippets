@@ -12,6 +12,7 @@ namespace SerializationTest {
             ControlledByAttribute.Test();
             ControlledByISerializable.Test();
             SurrogateSelectors.Test();
+            SerializationBinders.Test();
             Console.ReadKey();
         }
     }
