@@ -7,6 +7,7 @@ namespace ThreadTest {
     class Program {
         static void Main(string[] args) {
             ExecutionContextFlow.Test();
+            //ExecutionCancle.Test();
             Console.ReadKey();
         }
     }
