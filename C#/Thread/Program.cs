@@ -8,6 +8,7 @@ namespace ThreadTest {
         static void Main(string[] args) {
             ExecutionContextFlow.Test();
             //ExecutionCancle.Test();
+            //AggregateExceptionAnalysis.Test();
             Console.ReadKey();
         }
     }
