@@ -9,6 +9,8 @@ namespace ThreadTest {
             ExecutionContextFlow.Test();
             //ExecutionCancle.Test();
             //AggregateExceptionAnalysis.Test();
+            Tasks.Test();
+            SubTasks.Test();
             Console.ReadKey();
         }
     }
