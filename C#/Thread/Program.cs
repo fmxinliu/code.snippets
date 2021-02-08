@@ -11,6 +11,7 @@ namespace ThreadTest {
                 AggregateExceptionAnalysis.Test();
                 SubTasks.Test();
                 TasksFactory.Test();
+                TasksScheduler.Test();
             }
             Console.ReadKey();
         }

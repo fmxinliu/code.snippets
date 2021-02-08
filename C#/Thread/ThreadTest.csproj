@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExecutionCancle.cs" />
@@ -47,6 +48,7 @@
     <Compile Include="SubTasks.cs" />
     <Compile Include="Tasks.cs" />
     <Compile Include="TasksFactory.cs" />
+    <Compile Include="TasksScheduler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
