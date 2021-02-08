@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ThreadTest {
@@ -61,11 +62,15 @@ namespace ThreadTest {
         /// 利用延续任务监视任务执行情况
         /// </summary>
         static void TestMonitorTaskRunning() {
-            var task = new Task<Int32>(n => Sum((Int32)n), 10000);
+            var cts = new CancellationTokenSource();
+            var task = new Task<Int32>(() => Sum(cts.Token, 10000), cts.Token);
             task.ContinueWith(t => Console.WriteLine("任务执行成功.Sum={0}\n", t.Result), TaskContinuationOptions.OnlyOnRanToCompletion);
             task.ContinueWith(t => Console.WriteLine("任务抛出异常\n"), TaskContinuationOptions.OnlyOnFaulted);
             task.ContinueWith(t => Console.WriteLine("任务被取消\n"), TaskContinuationOptions.OnlyOnCanceled);
             task.Start();
+            Thread.Yield(); // 让出CPU，让其他线程有机会执行
+            //Thread.Sleep(0);
+            cts.Cancel();
         }
 
         static Int32 Sum(Int32 x, Boolean showInfo = false) {
@@ -75,6 +80,21 @@ namespace ThreadTest {
             }
             if (showInfo) {
                 Console.WriteLine("Sum({0})={1}.", x, sum);
+            }
+            return sum;
+        }
+
+        static Int32 Sum(CancellationToken ct, Int32 x) {
+            Int32 sum = 0;
+            for (Int32 i = 1; i <= x; i++) {
+                // 非Task(如ThreadPool)取消操作: 触发取消，跳出
+                //if (ct.IsCancellationRequested) {
+                //    break;
+                //}
+                // Task取消操作: 触发取消，抛出异常。用于区分Task是正常完成还是被取消
+                ct.ThrowIfCancellationRequested();
+                checked { sum += i; }
+                Thread.Sleep(1);
             }
             return sum;
         }
