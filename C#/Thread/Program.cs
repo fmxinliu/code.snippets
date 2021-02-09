@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
 
 namespace ThreadTest {
     class Program {
         static void Main(string[] args) {
             ExecutionContextFlow.Test();
-            //ExecutionCancle.Test();
-            //AggregateExceptionAnalysis.Test();
             Tasks.Test();
-            SubTasks.Test();
+            if (!Debugger.IsAttached) {
+                ExecutionCancle.Test();
+                AggregateExceptionAnalysis.Test();
+                SubTasks.Test();
+                TasksFactory.Test();
+            }
             Console.ReadKey();
         }
     }
