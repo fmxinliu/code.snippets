@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ExecutionCancle.cs" />
     <Compile Include="ExecutionContextFlow.cs" />
+    <Compile Include="ParallelTasks.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AggregateExceptionAnalysis.cs" />
