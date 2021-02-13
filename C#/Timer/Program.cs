@@ -7,7 +7,8 @@ namespace TimerTest {
         /// </summary>
         [STAThread]
         static void Main() {
-            ThreadingTimer.Test();
+            //ThreadingTimer.Test();
+            TimersTimer.Test();
         }
     }
 }
