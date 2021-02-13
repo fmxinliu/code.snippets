@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace TimerTest {
     static class Program {
@@ -8,7 +9,8 @@ namespace TimerTest {
         [STAThread]
         static void Main() {
             //ThreadingTimer.Test();
-            TimersTimer.Test();
+            //TimersTimer.Test();
+            Application.Run(new TimersTimerForm());
         }
     }
 }
