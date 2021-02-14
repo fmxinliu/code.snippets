@@ -8,6 +8,7 @@ namespace TimerTest {
         private TextBox tbxTime3;
         private System.Timers.Timer timer1;
         private System.Timers.Timer timer2;
+        private System.Windows.Forms.Timer timer3;
 
         public TimersTimerForm() {
             InitializeComponent();
@@ -17,6 +18,7 @@ namespace TimerTest {
         private void TimersTimerForm_FormClosing(object sender, FormClosingEventArgs e) {
             timer1.Dispose();
             timer2.Dispose();
+            timer3.Dispose();
         }
 
         private void InitTimer() {
@@ -30,28 +32,41 @@ namespace TimerTest {
             timer2.SynchronizingObject = this; /// 与窗体关联
             timer2.Interval = 1000;
             timer2.Start();
+
+            //timer3 = new System.Windows.Forms.Timer();
+            timer3.Tick += new EventHandler(Timer_Elapsed_3);
+            timer3.Interval = 1000;
+            timer3.Start();
         }
 
+        readonly object obj = new object();
         private void Timer_Elapsed_1(object sender, System.Timers.ElapsedEventArgs e) {
-            /// 可能抛出 ObjectDisposedException，退出窗体前，需关闭定时器
-            if (this.InvokeRequired && !this.Disposing && !this.IsDisposed) {
-                this.Invoke(new Action<object, System.Timers.ElapsedEventArgs>(Timer_Elapsed_1), sender, e);
-            }
-            else {
-                if (!this.Disposing && !this.IsDisposed) {
-                    this.tbxTime1.Text = DateTime.Now.ToString();
+            try {
+                if (this.InvokeRequired && !this.Disposing && !this.IsDisposed) {
+                    this.Invoke(new Action<object, System.Timers.ElapsedEventArgs>(Timer_Elapsed_1), sender, e);
+                }
+                else {
+                    if (!this.Disposing && !this.IsDisposed) {
+                        this.tbxTime1.Text = DateTime.Now.ToString();
+                    }
                 }
             }
+            catch (ObjectDisposedException) { } /// 可能抛出ObjectDisposedException，退出窗体前，需关闭定时器
         }
 
         private void Timer_Elapsed_2(object sender, System.Timers.ElapsedEventArgs e) {
             this.tbxTime2.Text = DateTime.Now.ToString();
         }
 
+        private void Timer_Elapsed_3(object sender, EventArgs e) {
+            this.tbxTime3.Text = DateTime.Now.ToString();
+        }
+
         private void InitializeComponent() {
             this.tbxTime1 = new System.Windows.Forms.TextBox();
             this.tbxTime2 = new System.Windows.Forms.TextBox();
             this.tbxTime3 = new System.Windows.Forms.TextBox();
+            this.timer3 = new System.Windows.Forms.Timer();
             this.SuspendLayout();
             // 
             // tbxTime1
