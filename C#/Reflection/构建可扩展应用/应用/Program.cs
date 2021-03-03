@@ -2,23 +2,23 @@
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using HostSDK;
+using SDK;
 
 /// <summary>
 /// 依托公共类型，加载插件
 /// </summary>
-namespace HostApp {
+namespace Host {
     class Program {
-        static void Main(string[] args) {
+        static void Main(String[] args) {
             // 插件地址
             String plugInDir = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)
 #if DEBUG
-                + @"..\..\..\..\HostPlugIn\bin\Debug";
+                + @"..\..\..\..\插件\bin\Debug";
 #else
-                + @"..\..\..\..\HostPlugIn\bin\Release";
+                + @"..\..\..\..\插件\bin\Release";
 #endif
             if (!Directory.Exists(plugInDir)) {
-                Console.WriteLine("请先编译插件工程 HostPlugIn");
+                Console.WriteLine("请先编译插件工程：plugin");
                 goto EXIT;
             }
 

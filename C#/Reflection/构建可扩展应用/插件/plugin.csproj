@@ -8,8 +8,8 @@
     <ProjectGuid>{EF1AA8F8-0C4F-453A-B3F5-3483373835DE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HostPlugIn</RootNamespace>
-    <AssemblyName>HostPlugIn</AssemblyName>
+    <RootNamespace>PlugIn</RootNamespace>
+    <AssemblyName>PlugIn</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,9 +41,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HostSDK\HostSDK.csproj">
+    <ProjectReference Include="..\接口\sdk.csproj">
       <Project>{02398966-A60A-4212-A883-4E14E9EBC89F}</Project>
-      <Name>HostSDK</Name>
+      <Name>sdk %28构建可扩展应用\sdk%29</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

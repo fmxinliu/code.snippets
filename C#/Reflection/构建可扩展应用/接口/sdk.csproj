@@ -8,8 +8,8 @@
     <ProjectGuid>{02398966-A60A-4212-A883-4E14E9EBC89F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HostSDK</RootNamespace>
-    <AssemblyName>HostSDK</AssemblyName>
+    <RootNamespace>SDK</RootNamespace>
+    <AssemblyName>SDK</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
