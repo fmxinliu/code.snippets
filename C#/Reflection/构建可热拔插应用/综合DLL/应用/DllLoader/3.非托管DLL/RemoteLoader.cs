@@ -26,7 +26,7 @@ namespace Host.DllLoader_3 {
 
         #region 函数导出
         public Int32 AddInt32(Int32 a, Int32 b) {
-            var funcAdd = (Add)proxy.Invoke("Add", typeof(Add));
+            var funcAdd = (Add)proxy.GetFuncAddress("Add", typeof(Add));
             return funcAdd(a, b); // #必须是__stdcall方式导出的非托管DLL
         }
         #endregion

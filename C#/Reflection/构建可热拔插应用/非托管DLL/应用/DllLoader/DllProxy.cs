@@ -5,13 +5,20 @@
  * ********************************************************************/
 namespace DllOperator {
     using System;
+    using System.IO;
+    using System.Linq;
     using System.Runtime.InteropServices;
 
     public class DllProxy {
-        /// <summary>  
-        /// Loadlibrary 返回的函数库模块的句柄
-        /// </summary>  
+        /// <summary>
+        /// DLL模块句柄
+        /// </summary>
         private IntPtr hModule = IntPtr.Zero;
+
+        /// <summary>
+        /// DLL路径
+        /// </summary>
+        private String lpLibFileName = String.Empty;
 
         [DllImport("kernel32.dll", CallingConvention = CallingConvention.StdCall, SetLastError = true)]
         public static extern IntPtr LoadLibrary(String lpLibFileName);
@@ -39,21 +46,25 @@ namespace DllOperator {
             UnloadDll();
         }
 
-        /// <summary>  
-        /// 装载 Dll
-        /// </summary>  
+        /// <summary>
+        /// 装载 DLL
+        /// </summary>
         public void LoadDll(String lpLibFileName) {
             if (IntPtr.Zero != this.hModule) {
                 this.UnloadDll();
             }
+            // 添加环境变量
+            AddDirToEnvironmentVariable(lpLibFileName);
             this.hModule = LoadLibrary(lpLibFileName);
             if (IntPtr.Zero == this.hModule) {
                 throw (new Exception(lpLibFileName + " Import Fail"));
             }
+
+            this.lpLibFileName = Path.GetFullPath(lpLibFileName);
         }
 
-        /// <summary>  
-        /// 装载 Dll
+        /// <summary>
+        /// 装载 DLL
         /// </summary>
         public void LoadDllEx(String lpLibFileName, Flags flag = Flags.LOAD_WITH_ALTERED_SEARCH_PATH) {
             if (IntPtr.Zero != this.hModule) {
@@ -63,17 +74,26 @@ namespace DllOperator {
             if (IntPtr.Zero == this.hModule) {
                 throw (new Exception(lpLibFileName + " Import Fail"));
             }
+
+            this.lpLibFileName = Path.GetFullPath(lpLibFileName);
         }
 
-        /// <summary>  
-        /// 卸载 Dll  
-        /// </summary>  
+        /// <summary>
+        /// 卸载 DLL
+        /// </summary>
         public void UnloadDll() {
             FreeLibrary(this.hModule);
             this.hModule = IntPtr.Zero;
+            RemoveDirToEnvironmentVariable(this.lpLibFileName);
         }
 
-        public Delegate Invoke(String apiName, Type t) {
+        /// <summary>
+        /// 将非托管函数指针转换为委托
+        /// </summary>
+        /// <param name="apiName">函数名</param>
+        /// <param name="t">委托类型</param>
+        /// <returns>委托</returns>
+        public Delegate GetFuncAddress(String apiName, Type t) {
             if (IntPtr.Zero == this.hModule) {
                 throw (new Exception("Can't find Module, please import *.dll first"));
             }
@@ -84,6 +104,52 @@ namespace DllOperator {
             }
 
             return Marshal.GetDelegateForFunctionPointer(api, t);
+        }
+
+        /// <summary>
+        /// 将 Dll 所在目录加入环境变量
+        /// </summary>
+        public void AddDirToEnvironmentVariable(String lpLibFileName) {
+            var directorypath = Path.GetDirectoryName(lpLibFileName);
+            var absolutepath = Path.GetFullPath(directorypath);
+            if (absolutepath.EndsWith(@"\")) {
+                absolutepath = absolutepath.Substring(0, absolutepath.Length - 1);
+            }
+
+            var pathstr = Environment.GetEnvironmentVariable("Path");
+            var pathArray = pathstr.Split(';');
+
+            var findpath1 = absolutepath;
+            var findpath2 = absolutepath + @"\";
+            if ((Array.IndexOf(pathArray, findpath1) == -1) &&
+                (Array.IndexOf(pathArray, findpath2) == -1)) {
+                Environment.SetEnvironmentVariable("Path", pathstr + ";" + absolutepath);
+            }
+        }
+
+        /// <summary>
+        /// 从环境变量中移除 Dll 所在目录
+        /// </summary>
+        public void RemoveDirToEnvironmentVariable(String lpLibFileName) {
+            var directorypath = Path.GetDirectoryName(lpLibFileName);
+            var absolutepath = Path.GetFullPath(directorypath);
+            if (absolutepath.EndsWith(@"\")) {
+                absolutepath = absolutepath.Substring(0, absolutepath.Length - 1);
+            }
+
+            var pathstr = Environment.GetEnvironmentVariable("Path");
+            var pathList = pathstr.Split(';').ToList();
+
+            int removeNum = 0;
+            var findpath1 = absolutepath;
+            var findpath2 = absolutepath + @"\";
+            removeNum += pathList.RemoveAll(s => s.Equals(findpath1));
+            removeNum += pathList.RemoveAll(s => s.Equals(findpath2));
+
+            if (removeNum != 0) {
+                var pathStr2 = String.Join(";", pathList);
+                Environment.SetEnvironmentVariable("Path", pathStr2);
+            }
         }
     }
 }
