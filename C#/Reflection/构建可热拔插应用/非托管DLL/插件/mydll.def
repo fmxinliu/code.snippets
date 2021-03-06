@@ -1,0 +1,5 @@
+LIBRARY
+
+EXPORTS
+	; 函数导出示例
+	Add @1

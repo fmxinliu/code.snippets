@@ -1,0 +1,37 @@
+========================================================================
+    动态链接库DLL
+========================================================================
+
+DLL查看: dumpbin /exports XXX.dll
+
+
+方式1: 使用def【无需修改代码，导出的函数名不改变】
+(1) 添加>新建项，模块定义文件: mydll.def
+(2) 链接器>输入，模块定义文件: mydll.def
+(3) 修改调用规约：
+(3.1) 修改所有函数调用规约: C/C++>高级，调用约定: __stdcall (/Gz)
+(3.2) 修改部分函数调用规约: int __stdcall Add(int plus1, int plus2) { ... }
+
+
+方式2: 【仅__cdecl导出的函数名不改变】
+(1) 定义宏
+#  if defined (DLL_EXPORTS)
+#    define DLL_API extern "C" __declspec(dllexport)
+#  elif defined (DLL_EXPORTS_USE_DEF_FILE)
+#    define DLL_API
+#  else
+#    define DLL_API extern "C" __declspec(dllimport)
+#  endif
+
+(2) 在stdafx.h中，定义
+#define DLL_EXPORTS
+#define DLL_CALLINGCONVENTION __cdecl
+
+(3) 头文件中定义
+DLL_API int DLL_CALLINGCONVENTION Add(int plus1, int plus2);
+
+(4) 导出源文件中定义
+int DLL_CALLINGCONVENTION Add(int plus1, int plus2)
+{
+    ...
+}
