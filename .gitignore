@@ -16,6 +16,7 @@ Lib/
 ipch/
 vs/
 *[Tt]est/
+*MSVC201*
 
 # visual studio
 *.aps
