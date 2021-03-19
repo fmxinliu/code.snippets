@@ -15,16 +15,19 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     MiniDumper/minidumper.cpp \
-    Controls/customlineedit.cpp
+    Controls/customlineedit.cpp \
+    String/stringutils.cpp
 
 HEADERS  += mainwindow.h \
     MiniDumper/minidumper.h \
-    Controls/customlineedit.h
+    Controls/customlineedit.h \
+    String/stringutils.h
 
 FORMS    += mainwindow.ui
 
 INCLUDEPATH += MiniDumper \
-    Controls
+    Controls \
+    String
 
 #
 # Release编译生成pdb
