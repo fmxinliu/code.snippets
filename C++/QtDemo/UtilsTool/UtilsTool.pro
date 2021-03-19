@@ -14,20 +14,23 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    MiniDumper/minidumper.cpp
+    MiniDumper/minidumper.cpp \
+    Controls/customlineedit.cpp
 
 HEADERS  += mainwindow.h \
-    MiniDumper/minidumper.h
+    MiniDumper/minidumper.h \
+    Controls/customlineedit.h
 
 FORMS    += mainwindow.ui
 
-INCLUDEPATH += MiniDumper
+INCLUDEPATH += MiniDumper \
+    Controls
 
 #
 # Release编译生成pdb
 #
 # 方法一: qmake配置 "CONFIG+=force_debug_info" "CONFIG+=senarate_debug_info"
-# 方法二: .pro配置
+# 方法二: pro配置
 QMAKE_CFLAGS_RELEASE = $$QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO
 QMAKE_CXXFLAGS_RELEASE = $$QMAKE_CXXFLAGS_RELEASE_WITH_DEBUGINFO
 QMAKE_LFLAGS_RELEASE = $$QMAKE_LFLAGS_RELEASE_WITH_DEBUGINFO
