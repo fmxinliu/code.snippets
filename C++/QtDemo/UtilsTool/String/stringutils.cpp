@@ -82,3 +82,15 @@ QString StringUtils::toHexString(const QString &asciiString, const QString &deli
 {
     return toHexString(asciiString, delimiter, width, false);
 }
+
+const char* StringUtils::toCharArray(QString str)
+{
+    std::string s = str.toStdString();
+    return s.c_str();
+}
+
+const wchar_t* StringUtils::toWCharArray(QString str)
+{
+    std::wstring ws = str.toStdWString();
+    return ws.c_str();
+}

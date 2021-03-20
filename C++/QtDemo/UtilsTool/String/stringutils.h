@@ -17,6 +17,9 @@ public:
     static QString toHexString(const QString &asciiString, const QString &delimiter, int width);
     static QString toHexString(const QString &asciiString, const QString &delimiter, int width, bool showPrefix);
 
+    static const char* toCharArray(QString str);
+    static const wchar_t* toWCharArray(QString str);
+
 private:
     Q_DISABLE_COPY(StringUtils)
 };
