@@ -1,15 +1,19 @@
 #include "mainwindow.h"
 #include <QApplication>
+#include <QMessageBox>
 #include "minidumper.h"
 #include "stringutils.h"
+#include "utiltools.h"
 
 void InitMiniDumper();
 void TestStringUtils();
-
+void TestSingleton();
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    TestSingleton();
 
 //    InitMiniDumper();
 //    int *p = 0;
@@ -60,4 +64,13 @@ void TestStringUtils()
     s1 = StringUtils::toHexString(str, " ", 5, true);
     s2 = StringUtils::toAsciiString(s1, " ", 5);
     Q_ASSERT(s2 == str);
+}
+
+void TestSingleton()
+{
+    QString s = "App单例运行";
+    if (!UtilTools::isSingleton(s)){
+        QMessageBox::warning(0, "Warn", "application already started!");
+        exit(-1);
+    }
 }

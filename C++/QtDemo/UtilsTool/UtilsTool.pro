@@ -16,12 +16,15 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     MiniDumper/minidumper.cpp \
     Controls/customlineedit.cpp \
-    String/stringutils.cpp
+    String/stringutils.cpp \
+    utiltools.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     MiniDumper/minidumper.h \
     Controls/customlineedit.h \
-    String/stringutils.h
+    String/stringutils.h \
+    utiltools.h \
+    mainwindow.h
 
 FORMS    += mainwindow.ui
 
@@ -32,8 +35,8 @@ INCLUDEPATH += MiniDumper \
 #
 # Release编译生成pdb
 #
-# 方法一: qmake配置 "CONFIG+=force_debug_info" "CONFIG+=senarate_debug_info"
-# 方法二: pro配置
+# 方法1: qmake 配置 "CONFIG+=force_debug_info" "CONFIG+=senarate_debug_info"
+# 方法2: pro 配置
 QMAKE_CFLAGS_RELEASE = $$QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO
 QMAKE_CXXFLAGS_RELEASE = $$QMAKE_CXXFLAGS_RELEASE_WITH_DEBUGINFO
 QMAKE_LFLAGS_RELEASE = $$QMAKE_LFLAGS_RELEASE_WITH_DEBUGINFO
