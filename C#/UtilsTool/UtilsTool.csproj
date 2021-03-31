@@ -44,6 +44,8 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoStart\AutoStartWhenStartup.cs" />
+    <Compile Include="AutoStart\RegistryHelper.cs" />
     <Compile Include="AutoStart\WinShortcut.cs" />
     <Compile Include="IO\IOHelper.cs" />
     <Compile Include="IO\PathExtensionMethods.cs" />

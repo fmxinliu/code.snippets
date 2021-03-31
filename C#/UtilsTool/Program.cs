@@ -5,7 +5,10 @@ namespace UtilsTool {
         static void Main(string[] args) {
             bool x = WinPowerManagement.ForbidWindowsAutoSleep();
             bool y = WinPowerManagement.RestoreWindowsAutoSleep();
-            //WinShortcut.SetAutoStartWhenStartup(WinShortcut.AppStartupPath, false);
+            //AutoStartWhenStartup.Enable();
+            //AutoStartWhenStartup.Disable();
+            //bool success1 = AutoStartWhenStartup.EnableWithAdmin(AutoStartWhenStartup.CurrentProcess, true);
+            //bool success2 = AutoStartWhenStartup.EnableWithAdmin(AutoStartWhenStartup.CurrentProcess, false);
             Console.ReadKey();
         }
     }

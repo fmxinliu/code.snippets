@@ -19,12 +19,14 @@ namespace UtilsTool {
         /// <summary>
         /// 当前程序全路径
         /// </summary>
-        public static readonly string AppStartupPath = Process.GetCurrentProcess().MainModule.FileName;
+        public static readonly string CurrentProcessPath = Process.GetCurrentProcess().MainModule.FileName;
 
         /// <summary>
-        /// 设置开机自动启动-只需要调用改方法就可以了参数里面的bool变量是控制开机启动的开关的，默认为开启自启启动
+        /// 设置开机自动启动
         /// </summary>
+        /// <param name="exePath">自启动程序</param>
         /// <param name="enable">是否开机自启</param>
+        /// <param name="createDesktopShortcut">是否创建桌面快捷方式</param>
         public static void SetAutoStartWhenStartup(string exePath, bool enable, bool createDesktopShortcut = false) {
             var startupShortcuts = GetLnkFileFromFolder(SystemStartupPath, exePath);
             if (enable) {
@@ -37,7 +39,7 @@ namespace UtilsTool {
                 else if (startupShortcuts.Count < 1) {
                     // 不存在快捷方式，新创建一个
                     var shortcutName = Path.GetFileNameWithoutExtension(exePath);
-                    CreateShortcut(SystemStartupPath, shortcutName, exePath, shortcutName);
+                    CreateShortcut(SystemStartupPath, shortcutName, exePath);
                 }
             }
             else { // 删除所有快捷方式
@@ -57,7 +59,7 @@ namespace UtilsTool {
 
             if (desktopShortcuts.Count < 1) {
                 var shortcutName = Path.GetFileNameWithoutExtension(exePath);
-                CreateShortcut(DesktopPath, shortcutName, exePath, shortcutName);
+                CreateShortcut(DesktopPath, shortcutName, exePath);
             }
         }
 
