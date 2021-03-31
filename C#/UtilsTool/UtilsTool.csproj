@@ -47,6 +47,8 @@
     <Compile Include="AutoStart\AutoStartWhenStartup.cs" />
     <Compile Include="AutoStart\RegistryHelper.cs" />
     <Compile Include="AutoStart\WinShortcut.cs" />
+    <Compile Include="Delay\Delay.cs" />
+    <Compile Include="Delay\InterruptState.cs" />
     <Compile Include="IO\IOHelper.cs" />
     <Compile Include="IO\PathExtensionMethods.cs" />
     <Compile Include="MiniDumper\MiniDumper.cs" />
