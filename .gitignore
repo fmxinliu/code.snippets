@@ -32,3 +32,8 @@ vs/
 *.suo
 *.user
 *.sln.docstates
+
+## Ignore PyCharm temporary files
+__pycache__/
+.idea/
+*.txt
