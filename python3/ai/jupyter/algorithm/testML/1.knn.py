@@ -22,8 +22,9 @@ def test():
 
     # 3.数据集归一化
     transfer = StandardScaler()
-    X_train_standard = transfer.fit_transform(X_train)
-    X_test_standard = transfer.fit_transform(X_test)
+    transfer.fit(X_train)
+    X_train_standard = transfer.transform(X_train)
+    X_test_standard = transfer.transform(X_test)
 
     # 4.机器学习
     # estimater = kNNClassifier(k=5)
