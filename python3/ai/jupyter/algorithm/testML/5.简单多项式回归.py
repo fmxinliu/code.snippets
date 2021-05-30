@@ -1,6 +1,7 @@
 import numpy as np
-import matplotlib.pyplot as plt
+from visualization import plot_predict_curve_2d, plot_learning_curve
 from SimplePolynomialRegression import SimplePolynomialRegression
+from model_selection import train_test_split
 from metrics import mean_squared_error
 
 
@@ -16,15 +17,13 @@ def test(degree):
     y_predict = simple_ploy_regression.predict(x)
     print("MSE:", mean_squared_error(y, y_predict))
 
-    # 3.绘制
-    plt.scatter(x, y)
-    # plt.plot(x, y_predict, color='r')
-    # plt.plot(np.sort(x), y_predict[np.argsort(x)], color='r')  # x从小到大的顺序
-    x_plot = np.linspace(-3, 3, 100)
-    y_plot = simple_ploy_regression.predict(x_plot)
-    plt.plot(x_plot, y_plot, color='r')  # 绘制真实的拟合曲线
-    plt.axis([-3, 3, -1, 10])
-    plt.show()
+    # 3.拟合曲线
+    plot_predict_curve_2d(simple_ploy_regression, x, y, axis=[-3, 3, -1, 10])
+
+    # 4.学习曲线
+    X = x.reshape(-1, 1)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, seed=66)
+    plot_learning_curve(simple_ploy_regression, X_train, X_test, y_train, y_test, axis=[0, len(X_train) + 1, 0, 4])
 
 
 if __name__ == '__main__':
