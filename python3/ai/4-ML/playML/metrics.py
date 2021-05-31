@@ -1,5 +1,5 @@
 import numpy as np
-from transform import to_ndarray
+from .transform import to_ndarray
 
 
 def __check__(y_true, y_predict):

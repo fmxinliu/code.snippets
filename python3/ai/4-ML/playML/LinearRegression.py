@@ -1,6 +1,6 @@
 import numpy as np
-from metrics import r2_score
-from transform import to_ndarray, hstack_1
+from .metrics import r2_score
+from .transform import to_ndarray, hstack_1
 
 
 class LinearRegression:

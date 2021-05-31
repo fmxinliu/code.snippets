@@ -1,6 +1,6 @@
 import numpy as np
-from metrics import r2_score
-from transform import to_ndarray
+from .metrics import r2_score
+from .transform import to_ndarray
 
 
 class SimpleLinearRegression:

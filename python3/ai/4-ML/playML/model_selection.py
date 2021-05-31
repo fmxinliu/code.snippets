@@ -1,5 +1,5 @@
 import numpy as np
-from transform import to_ndarray
+from .transform import to_ndarray
 
 
 def train_test_split(X, y, test_ratio=0.2, seed=None):

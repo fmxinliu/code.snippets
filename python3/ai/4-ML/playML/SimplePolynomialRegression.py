@@ -1,6 +1,6 @@
-from metrics import r2_score
-from transform import hstack_n
-from LinearRegression import LinearRegression
+from .metrics import r2_score
+from .transform import hstack_n
+from .LinearRegression import LinearRegression
 
 
 class SimplePolynomialRegression:

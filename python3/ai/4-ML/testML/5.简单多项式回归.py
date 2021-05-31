@@ -1,8 +1,8 @@
 import numpy as np
-from visualization import plot_predict_curve_2d, plot_learning_curve
-from SimplePolynomialRegression import SimplePolynomialRegression
-from model_selection import train_test_split
-from metrics import mean_squared_error
+from playML.visualization import plot_predict_curve_2d, plot_learning_curve
+from playML.SimplePolynomialRegression import SimplePolynomialRegression
+from playML.model_selection import train_test_split
+from playML.metrics import mean_squared_error
 
 
 def test(degree):

@@ -2,10 +2,10 @@ import numpy as np
 
 
 def test():
-    from model_selection import train_test_split
-    from LogisticRegression import LogisticRegression
-    from sklearn.datasets import load_iris
     import matplotlib.pyplot as plt
+    from sklearn.datasets import load_iris
+    from playML.model_selection import train_test_split
+    from playML.LogisticRegression import LogisticRegression
 
     # 1.获取数据集
     iris = load_iris()
@@ -53,8 +53,8 @@ def test_2():
     from sklearn.datasets import load_iris, load_digits
     from sklearn.model_selection import train_test_split
     from sklearn.linear_model import LogisticRegression
-    from metrics import precision_score, recall_score, f1_score, confusion_matrix
-    from visualization import plot_confusion_matrix, plot_roc_curve, plot_pr_curve, plot_decision_boundary_2d
+    from playML.metrics import precision_score, recall_score, f1_score, confusion_matrix
+    from playML.visualization import plot_confusion_matrix, plot_roc_curve, plot_pr_curve, plot_decision_boundary_2d
 
     def test_evaluate_score():
         """评价指标"""

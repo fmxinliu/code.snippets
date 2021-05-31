@@ -1,5 +1,5 @@
 import numpy as np
-from transform import to_ndarray
+from .transform import to_ndarray
 
 
 class PCA:

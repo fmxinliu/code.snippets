@@ -1,8 +1,8 @@
 import numpy as np
 from math import sqrt
 from collections import Counter
-from metrics import accuracy_socre
-from transform import to_ndarray
+from .metrics import accuracy_socre
+from .transform import to_ndarray
 
 
 class kNNClassifier:
