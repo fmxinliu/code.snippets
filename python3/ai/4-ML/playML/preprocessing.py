@@ -3,7 +3,7 @@ from .transform import to_ndarray
 
 
 class StandardScaler:
-    """均值方差归一化"""
+    """均值方差标准化"""
 
     def __init__(self):
         self.mean_ = None
@@ -16,7 +16,7 @@ class StandardScaler:
         return self
 
     def transform(self, X):
-        """将X根据这个StandardScaler进行均值方差归一化处理"""
+        """将X根据这个StandardScaler进行均值方差标准化处理"""
         assert X.ndim == 2, "The dimension of X must be 2"
         assert self.mean_ is not None and self.scale_ is not None, \
             "must fit before tranform!"
@@ -31,6 +31,6 @@ class StandardScaler:
         return resX
 
     def fit_transform(self, X):
-        """将X根据这个StandardScaler进行均值方差归一化处理"""
+        """将X根据这个StandardScaler进行均值方差标准化处理"""
         self.fit(X)
         return self.transform(X)

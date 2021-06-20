@@ -20,7 +20,7 @@ def test():
     # X_train, X_test, y_train, y_test = train_test_split(X, y, test_ratio=0.2, seed=222)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=222)
 
-    # 3.数据集归一化
+    # 3.数据集标准化
     transfer = StandardScaler()
     transfer.fit(X_train)
     X_train_standard = transfer.transform(X_train)
