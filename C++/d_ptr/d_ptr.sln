@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CuteApp", "CuteApp\CuteApp.vcxproj", "{E1CF2265-EF12-4962-AA42-958588CE8E9C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WidgetLib", "WidgetLib\WidgetLib.vcxproj", "{483C04B3-3A5E-4962-B11A-66AEE3CEC125}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1CF2265-EF12-4962-AA42-958588CE8E9C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E1CF2265-EF12-4962-AA42-958588CE8E9C}.Debug|Win32.Build.0 = Debug|Win32
+		{E1CF2265-EF12-4962-AA42-958588CE8E9C}.Release|Win32.ActiveCfg = Release|Win32
+		{E1CF2265-EF12-4962-AA42-958588CE8E9C}.Release|Win32.Build.0 = Release|Win32
+		{483C04B3-3A5E-4962-B11A-66AEE3CEC125}.Debug|Win32.ActiveCfg = Debug|Win32
+		{483C04B3-3A5E-4962-B11A-66AEE3CEC125}.Debug|Win32.Build.0 = Debug|Win32
+		{483C04B3-3A5E-4962-B11A-66AEE3CEC125}.Release|Win32.ActiveCfg = Release|Win32
+		{483C04B3-3A5E-4962-B11A-66AEE3CEC125}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
