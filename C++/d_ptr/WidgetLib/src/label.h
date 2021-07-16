@@ -7,6 +7,8 @@
   #include "label_v1x.h"
 #elif V2_0 || V2_1
   #include "label_v2x.h"
+#elif V3_X
+  #include "label_v3x.h"
 #endif
 
 

@@ -1,4 +1,4 @@
 #ifndef LIBVERSION_H 
 #define LIBVERSION_H 
-#define V2_1 1         
+#define V3_X 1
 #endif               

@@ -11,6 +11,8 @@
   #include "widget_v20.h"
 #elif V2_1
   #include "widget_v21.h"
+#elif V3_X
+  #include "widget_v3x.h"
 #endif
 
 #endif // WIDGET_H

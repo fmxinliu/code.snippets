@@ -12,6 +12,10 @@ int main(int argc, char *argv[])
     Label label("¿Ø¼þ" + Widget::version());
     cout << label.text() << endl;
 
+#if V3_X
+    label.refresh();
+#endif
+
     // ÊÇ·ñÔÝÍ£
     for (int i = 1; i < argc; i++) {
         string s = argv[i];

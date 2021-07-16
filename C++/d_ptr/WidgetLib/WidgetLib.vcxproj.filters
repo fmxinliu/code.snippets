@@ -51,6 +51,12 @@
     <ClInclude Include="src\rev\label_v2x.h">
       <Filter>头文件\head\rev</Filter>
     </ClInclude>
+    <ClInclude Include="src\rev\widget_v3x.h">
+      <Filter>头文件\head\rev</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rev\label_v3x.h">
+      <Filter>头文件\head\rev</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\label.cpp">
