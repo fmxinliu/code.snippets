@@ -29,11 +29,12 @@ Label::Label()
     // v2.x数据已封装
 #if V2_0 || V2_1
     : d_ptr(new LabelPrivate(""))
-    // v3.x新增 q 指针
-#elif V3_X
-    : d_ptr(new LabelPrivate("", this))
 #endif
 {
+    // v3.x新增 q 指针
+#if V3_X
+    d_ptr = new LabelPrivate("", this);
+#endif
 }
 
 Label::Label(string text)
@@ -42,11 +43,12 @@ Label::Label(string text)
     // v2.x数据已封装
 #elif V2_0 || V2_1
     : d_ptr(new LabelPrivate(text))
-    // v3.x新增 q 指针
-#elif V3_X
-    : d_ptr(new LabelPrivate(text, this))
 #endif
 {
+    // v3.x新增 q 指针
+#if V3_X
+    d_ptr = new LabelPrivate(text, this);
+#endif
 }
 
 Label::~Label()

@@ -38,11 +38,12 @@ Widget::Widget()
     // v2.x数据已封装
 #elif V2_0 || V2_1
     : d_ptr(new WidgetPrivate)
-    // v3.x数据已封装，且添加 q 指针
-#elif V3_X
-    : d_ptr(new WidgetPrivate(this))
 #endif
 {
+    // v3.x数据已封装，且添加 q 指针
+#if V3_X
+    d_ptr = new WidgetPrivate(this);
+#endif
 }
 
 Widget::~Widget()
