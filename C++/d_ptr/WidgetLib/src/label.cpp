@@ -64,7 +64,7 @@ class LabelPrivate : public WidgetPrivate
 {
     friend Label;
 public:
-    LabelPrivate(string text, Label *q) : WidgetPrivate(q), m_text(text) {}
+    LabelPrivate(string text) : m_text(text) {}
     void Func() { Q_PTR(Label); q->repaint(); }
 
 private:
@@ -72,12 +72,12 @@ private:
 };
 
 Label::Label()
-    : Widget(*new LabelPrivate("", this))
+    : Widget(*new LabelPrivate(""))
 {
 }
 
 Label::Label(string text)
-    : Widget(*new LabelPrivate(text, this))
+    : Widget(*new LabelPrivate(text))
 {
 }
 

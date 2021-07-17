@@ -5,14 +5,15 @@ Widget::Widget()
     // v1.x 数据未封装
 #if V1_1
     : m_stylesheet("stylesheet")
-    // v2.x数据已封装
-#elif V2_0 || V2_1
+    // v2.x、v3.x数据已封装
+#elif V2_0 || V2_1 || V3_X
     : d_ptr(new WidgetPrivate)
 #endif
 {
-    // v3.x数据已封装，且添加 q 指针
+    // v3.x 添加了 q 指针
 #if V3_X
-    d_ptr = new WidgetPrivate(this);
+    D_PTR(Widget);
+    d->q_ptr = this;
 #endif
 }
 
@@ -80,5 +81,7 @@ void Widget::repaint()
 Widget::Widget(WidgetPrivate &d)
     : d_ptr(&d)
 {
+    // v3.x 添加了 q 指针
+    d_ptr->q_ptr = this;
 }
 #endif

@@ -13,6 +13,7 @@ class WidgetPrivate
 public:
     // v3.x新增 q 指针，可访问外部 API 类
 #if V3_X
+    WidgetPrivate() : q_ptr(NULL) {}
     WidgetPrivate(Widget *q) : q_ptr(q) {}
     void Func() { q_ptr->update(); }
 #endif

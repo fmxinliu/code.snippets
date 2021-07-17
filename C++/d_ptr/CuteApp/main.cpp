@@ -6,7 +6,6 @@
 
 #pragma comment(lib, "WidgetLib")
 
-
 int main(int argc, char *argv[])
 {
     Label label("¿Ø¼þ" + Widget::version());
