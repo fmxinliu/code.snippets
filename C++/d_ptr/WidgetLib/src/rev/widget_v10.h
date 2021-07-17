@@ -1,19 +1,9 @@
 #ifndef WIDGET_V10_H
 #define WIDGET_V10_H
 
-#include "libcommon.h"
+#include "rect.h"
 #include <string>
 using namespace std;
-
-struct MODULE_API Rect
-{
-    int x;
-    int y;
-    int width;
-    int height;
-
-    Rect() { x = y = width = height = 0; }
-};
 
 class MODULE_API Widget
 {
