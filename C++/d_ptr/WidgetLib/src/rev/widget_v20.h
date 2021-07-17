@@ -24,7 +24,7 @@ public:
     Rect geometry() const;
     static string version();
 
-protected:
+private:
     WidgetPrivate *d_ptr;
 };
 

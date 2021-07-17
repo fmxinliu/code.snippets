@@ -18,7 +18,6 @@ public:
 
 private:
     LabelPrivate *d_ptr;
-    Label(LabelPrivate *d);
 
 private:
     Label(const Label &);

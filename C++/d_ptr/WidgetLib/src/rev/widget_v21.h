@@ -25,7 +25,7 @@ public:
     string stylesheet() const;
     static string version();
 
-protected:
+private:
     WidgetPrivate *d_ptr; // 相比于v2.0版本，新增成员
 };
 

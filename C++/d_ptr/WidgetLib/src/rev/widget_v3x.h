@@ -29,9 +29,8 @@ public:
     virtual void update();
     virtual void repaint();
 
-protected:
+private:
     WidgetPrivate *d_ptr;
-    Widget(WidgetPrivate *d);
 
 private:
     Widget(const Widget &);
