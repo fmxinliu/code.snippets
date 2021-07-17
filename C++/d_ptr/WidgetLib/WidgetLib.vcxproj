@@ -89,6 +89,7 @@
     <ClInclude Include="src\rev\widget_v21.h" />
     <ClInclude Include="src\rev\widget_v3x.h" />
     <ClInclude Include="src\widget.h" />
+    <ClInclude Include="src\widget_p.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\label.cpp" />

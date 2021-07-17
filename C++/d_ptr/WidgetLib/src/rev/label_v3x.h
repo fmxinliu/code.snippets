@@ -17,9 +17,6 @@ public:
     void refresh();
 
 private:
-    LabelPrivate *d_ptr;
-
-private:
     Label(const Label &);
     Label & operator=(const Label &);
 };

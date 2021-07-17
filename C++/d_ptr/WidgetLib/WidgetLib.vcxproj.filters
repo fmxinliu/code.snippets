@@ -60,6 +60,9 @@
     <ClInclude Include="src\rev\rect.h">
       <Filter>头文件\head\rev</Filter>
     </ClInclude>
+    <ClInclude Include="src\widget_p.h">
+      <Filter>头文件\head</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\label.cpp">
