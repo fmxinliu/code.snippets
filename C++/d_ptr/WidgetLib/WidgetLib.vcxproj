@@ -78,6 +78,7 @@
   <ItemGroup>
     <ClInclude Include="libcommon.h" />
     <ClInclude Include="libversion.h" />
+    <ClInclude Include="src\global.h" />
     <ClInclude Include="src\label.h" />
     <ClInclude Include="src\rev\label_v1x.h" />
     <ClInclude Include="src\rev\label_v2x.h" />

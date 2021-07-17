@@ -25,9 +25,8 @@ private:
     std::string m_stylesheet;
 #endif
 
-protected:
 #if V3_X
-    Widget *q_ptr; // q ÷∏’Î
+    Q_DECLARE_PRIVATE(Widget)
 #endif
 };
 

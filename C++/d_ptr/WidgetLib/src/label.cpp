@@ -65,7 +65,7 @@ class LabelPrivate : public WidgetPrivate
     friend Label;
 public:
     LabelPrivate(string text, Label *q) : WidgetPrivate(q), m_text(text) {}
-    void Func() { q_ptr->repaint(); }
+    void Func() { Q_PTR(Label); q->repaint(); }
 
 private:
     string m_text;
@@ -87,7 +87,7 @@ Label::~Label()
 
 string Label::text() const
 {
-    LabelPrivate *d =static_cast<LabelPrivate *>(d_ptr);
+    D_PTR(Label);
     return d->m_text;
 }
 
@@ -98,7 +98,8 @@ void Label::repaint()
 
 void Label::refresh()
 {
-    d_ptr->Func();
+    D_PTR(Label);
+    d->Func();
     this->Widget::repaint();
     this->update();
 }

@@ -63,6 +63,9 @@
     <ClInclude Include="src\widget_p.h">
       <Filter>头文件\head</Filter>
     </ClInclude>
+    <ClInclude Include="src\global.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\label.cpp">
