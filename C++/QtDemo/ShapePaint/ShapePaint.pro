@@ -32,3 +32,6 @@ HEADERS  += \
 
 RESOURCES += \
     images.qrc
+
+TRANSLATIONS += \
+    cn.ts

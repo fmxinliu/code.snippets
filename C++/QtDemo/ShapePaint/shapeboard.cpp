@@ -38,20 +38,20 @@ ShapeBoard::~ShapeBoard()
 void ShapeBoard::createActions()
 {
     QAction *openFileAction = new QAction(QIcon(":/images/open.png"), tr("&Open file"), this);
-    openFileAction->setToolTip(tr("Open a file."));
+    openFileAction->setToolTip(tr("Open file"));
     openFileAction->setStatusTip(tr("Open a file."));
     connect(openFileAction, SIGNAL(triggered()), this, SLOT(onOpenFile()));
     m_fileActions << openFileAction;
 
     QAction *saveFileAction = new QAction(QIcon(":/images/save.png"), tr("&Save file"), this);
-    saveFileAction->setToolTip(tr("Save to file."));
+    saveFileAction->setToolTip(tr("Save file"));
     saveFileAction->setStatusTip(tr("Save to file."));
     connect(saveFileAction, SIGNAL(triggered()), this, SLOT(onSaveFile()));
     m_fileActions << saveFileAction;
 
     m_group = new QActionGroup(this);
     QAction *drawLineAction = new QAction(QIcon(":/images/line.png"), tr("&Line"), this);
-    drawLineAction->setToolTip(tr("Draw a line."));
+    drawLineAction->setToolTip(tr("Line"));
     drawLineAction->setStatusTip(tr("Draw a line."));
     drawLineAction->setCheckable(true);
     drawLineAction->setChecked(true);
@@ -60,7 +60,7 @@ void ShapeBoard::createActions()
     m_drawActions << drawLineAction;
 
     QAction *drawRectAction = new QAction(QIcon(":/images/rect.png"), tr("&Rectangle"), this);
-    drawRectAction->setToolTip(tr("Draw a rectangle."));
+    drawRectAction->setToolTip(tr("Rectangle"));
     drawRectAction->setStatusTip(tr("Draw a rectangle."));
     drawRectAction->setCheckable(true);
     m_group->addAction(drawRectAction);
@@ -68,7 +68,7 @@ void ShapeBoard::createActions()
     m_drawActions << drawRectAction;
 
     QAction *drawCircleAction = new QAction(QIcon(":/images/circle.png"), tr("&Circle"), this);
-    drawCircleAction->setToolTip(tr("Draw a circle."));
+    drawCircleAction->setToolTip(tr("Circle"));
     drawCircleAction->setStatusTip(tr("Draw a circle."));
     drawCircleAction->setCheckable(true);
     m_group->addAction(drawCircleAction);
@@ -76,13 +76,13 @@ void ShapeBoard::createActions()
     m_drawActions << drawCircleAction;
 
     QAction *undoAction = new QAction(QIcon(":/images/delete.png"), tr("&Remove Shape"), this);
-    undoAction->setToolTip(tr("remove selected shape."));
+    undoAction->setToolTip(tr("Remove Shape"));
     undoAction->setStatusTip(tr("remove selected shape."));
     connect(undoAction, SIGNAL(triggered()), this, SLOT(onRemoveItem()));
     m_editActions << undoAction;
 
     QAction *clearAction = new QAction(QIcon(":/images/clear.png"), tr("&Clear All"), this);
-    clearAction->setToolTip(tr("Clear all shapes."));
+    clearAction->setToolTip(tr("Clear All"));
     clearAction->setStatusTip(tr("Clear all shapes."));
     connect(clearAction, SIGNAL(triggered()), m_paintWidget, SLOT(clear()));
     m_editActions << clearAction;
