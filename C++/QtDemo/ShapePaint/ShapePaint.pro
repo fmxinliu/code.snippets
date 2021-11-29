@@ -35,3 +35,6 @@ RESOURCES += \
 
 TRANSLATIONS += \
     cn.ts
+
+RC_ICONS += \
+    main.ico
